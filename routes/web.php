@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','Auth\LoginController@login');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::any('convert', 'HomeController@convert');
+Route::get('/recipe-categories', 'RecipeController@index');
+Route::post('/recipe-categories/add', 'RecipeController@index');
