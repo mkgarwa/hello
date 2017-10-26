@@ -16,7 +16,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $id
  * @property int $role
  * @property string $password
- * @property string $remember_token
  * @property string $first_name
  * @property string $last_name
  * @property string $contact
@@ -57,13 +56,11 @@ class UserProfile extends Authenticatable
 
 	protected $hidden = [
 		'password',
-		'remember_token'
 	];
 
 	protected $fillable = [
 		'role',
 		'password',
-		'remember_token',
 		'first_name',
 		'last_name',
 		'contact',
@@ -87,11 +84,6 @@ class UserProfile extends Authenticatable
 	public function user_status()
 	{
 		return $this->belongsTo(\App\Models\UserStatus::class, 'status');
-	}
-
-	public function recipe_comments()
-	{
-		return $this->hasMany(\App\Models\RecipeComment::class, 'user_id');
 	}
 
 	public function recipes()

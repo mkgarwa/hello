@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/vendor/fontawesome/css/font-awesome.css"/>
     <link rel="stylesheet" href="/vendor/animate.css/animate.css"/>
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/vendor/switchery/switchery.min.css"/>
 
     <!-- App styles -->
     <link rel="stylesheet" href="/styles/pe-icons/pe-icon-7-stroke.css"/>
@@ -43,10 +44,18 @@
 <script src="/vendor/pacejs/pace.min.js"></script>
 <script src="/vendor/jquery/dist/jquery.min.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/switchery/switchery.min.js"></script>
 
 <!-- App scripts -->
 <script src="/scripts/luna.js"></script>
-
+<script>
+    $(document).ready(function() {
+        setTimeout(function(){
+            $('[autocomplete=off]').val('');
+        }, 15);
+        new Switchery(document.querySelector('.js-switch'), { color: '#f6a821', size: 'small'});
+    });
+</script>
 </body>
 
 </html>

@@ -18,6 +18,8 @@
 | loading any of our classes later on. It feels great to relax.
 |
 */
+ini_set('memory_limit','-1');
+ini_set('post_max_size','1024M');
 
 require __DIR__.'/../bootstrap/autoload.php';
 

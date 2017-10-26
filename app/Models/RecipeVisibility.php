@@ -32,6 +32,7 @@ class RecipeVisibility extends Eloquent
 	];
 
 	protected $fillable = [
+	    'id',
 		'name',
 		'description',
 		'created',

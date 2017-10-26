@@ -17,7 +17,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $slug
  * @property string $icon
  * @property \Carbon\Carbon $created
- * @property \Carbon\Carbon $modifed
+ * @property \Carbon\Carbon $modified
  * 
  * @property \Illuminate\Database\Eloquent\Collection $recipes
  *
@@ -29,7 +29,7 @@ class RecipeCategory extends Eloquent
 
 	protected $dates = [
 		'created',
-		'modifed'
+		'modified'
 	];
 
 	protected $fillable = [
@@ -37,11 +37,11 @@ class RecipeCategory extends Eloquent
 		'slug',
 		'icon',
 		'created',
-		'modifed'
+		'modified'
 	];
 
-	public function recipes()
-	{
-		return $this->hasMany(\App\Models\Recipe::class);
-	}
+    public function category_recipe()
+    {
+        return $this->hasMany(\App\Models\RecipesCategoriesMap::class,'category_id');
+    }
 }

@@ -16,6 +16,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $title
  * @property string $slug
  * @property string $description
+ * @property string $ingredients
  * @property string $instructions
  * @property int $preparation_time
  * @property int $cooking_time
@@ -23,15 +24,20 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $allow_comments
  * @property int $user_id
  * @property string $featured_image
+ * @property int $video_domain_id
  * @property string $video_url
  * @property int $visibility_id
  * @property int $recipe_category_id
+ * @property string $is_approved
+ * @property string $footnote
+ * @property string $tip
  * @property \Carbon\Carbon $created
  * @property \Carbon\Carbon $modified
  * 
  * @property \App\Models\RecipeCategory $recipe_category
  * @property \App\Models\UserProfile $user_profile
  * @property \App\Models\RecipeVisibility $recipe_visibility
+ * @property \App\Models\VideoDomain $video_domain
  * @property \Illuminate\Database\Eloquent\Collection $recipe_comments
  *
  * @package App\Models
@@ -46,7 +52,7 @@ class Recipe extends Eloquent
 		'serving_people' => 'int',
 		'user_id' => 'int',
 		'visibility_id' => 'int',
-		'recipe_category_id' => 'int'
+		'video_domain_id' => 'int'
 	];
 
 	protected $dates = [
@@ -57,7 +63,8 @@ class Recipe extends Eloquent
 	protected $fillable = [
 		'title',
 		'slug',
-		'description',
+        'description',
+        'ingredients',
 		'instructions',
 		'preparation_time',
 		'cooking_time',
@@ -65,17 +72,25 @@ class Recipe extends Eloquent
 		'allow_comments',
 		'user_id',
 		'featured_image',
+        'video_domain_id',
 		'video_url',
 		'visibility_id',
-		'recipe_category_id',
+        'is_approved',
+        'footnote',
+        'tip',
 		'created',
 		'modified'
 	];
 
 	public function recipe_category()
 	{
-		return $this->belongsTo(\App\Models\RecipeCategory::class);
+		return $this->hasMany(\App\Models\RecipesCategoriesMap::class,'recipe_id');
 	}
+
+    public function recipe_images()
+    {
+        return $this->hasMany(\App\Models\RecipeImages::class,'recipe_id');
+    }
 
 	public function user_profile()
 	{
@@ -85,10 +100,5 @@ class Recipe extends Eloquent
 	public function recipe_visibility()
 	{
 		return $this->belongsTo(\App\Models\RecipeVisibility::class, 'visibility_id');
-	}
-
-	public function recipe_comments()
-	{
-		return $this->hasMany(\App\Models\RecipeComment::class);
 	}
 }

@@ -433,6 +433,9 @@ fieldset[disabled] .btn-warning.focus {
   outline: 0;
   box-shadow: none;
 }
+textarea{
+  resize: none;
+}
 .btn-danger:active,
 .btn-danger.active,
 .open > .dropdown-toggle.btn-danger {
@@ -799,10 +802,10 @@ body {
   color: #949ba2;
 }
 .content {
-  margin-top: 60px;
+  margin-top: 40px;
   margin-left: 200px;
   position: relative;
-  padding: 30px;
+  padding: 20px;
   transition: margin-left 0.3s ease-out;
   -webkit-transition: margin-left 0.3s ease-out;
 }
@@ -1069,7 +1072,7 @@ img.image-xl {
   width: 200px;
   background-color: #f6a821;
   height: 60px;
-  padding: 20px 25px;
+  padding: 15px 25px;
   font-weight: 400;
   letter-spacing: 10px;
   color: #FFFFFF;
@@ -1170,9 +1173,18 @@ img.image-xl {
 .luna-nav.nav {
   padding-top: 15px;
 }
+.luna-nav.nav li{
+  border-bottom: 1px solid #393c44;
+}
+.luna-nav.nav li ul{
+  background: #3a3c45;
+}
+.luna-nav.nav li ul li{
+  border-bottom: none;
+}
 .luna-nav.nav li > a,
 .luna-nav.nav .nav-category {
-  padding: 8px 15px 8px 25px;
+  padding: 10px 15px 10px 20px;
   margin: 0 0;
 }
 .luna-nav.nav .nav-info {
@@ -1204,8 +1216,8 @@ img.image-xl {
   color: #848c94;
 }
 .luna-nav.nav li.active a {
-  border-left: 6px solid #f6a821;
-  padding-left: 19px;
+  border-left: 4px solid #f6a821;
+  padding-left: 15px;
   color: #c0c4c8;
 }
 .luna-nav.nav li a:hover,
@@ -1728,7 +1740,7 @@ input[type="radio"] .styled:checked + label::after {
 .modal-content .modal-header {
   border-color: #3d404c;
   background-color: #1d1f24;
-  padding: 40px 20px;
+  padding: 20px;
 }
 .modal-content .modal-header .close {
   color: #ffffff;
@@ -2847,4 +2859,33 @@ fieldset[disabled] .form-control {
   border-radius: 4px !important;
   color: #ffffff !important;
   padding: 6px 12px !important;
+}
+.panel-body ul.alert-danger{
+  padding:5px;
+}
+ul li{
+  list-style-type: none;
+}
+.no-margin{
+  margin:0px;
+}
+.no-padding{
+  padding:0px;
+}
+.show-images{
+  margin:0px;
+  padding: 0px;
+}
+.show-images li{
+  margin: 5px 5px 5px 0px;
+  display: inline-block;
+  position: relative;
+}
+.show-images li i.fa{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: rgba(0,0,0,.5);
+  padding: 3px;
+  cursor: pointer;
 }

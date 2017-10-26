@@ -17,8 +17,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created
  * @property \Carbon\Carbon $modified
  * 
- * @property \Illuminate\Database\Eloquent\Collection $recipe_nutritional_elements_maps
- *
  * @package App\Models
  */
 class RecipeUnit extends Eloquent
@@ -35,9 +33,4 @@ class RecipeUnit extends Eloquent
 		'created',
 		'modified'
 	];
-
-	public function recipe_nutritional_elements_maps()
-	{
-		return $this->hasMany(\App\Models\RecipeNutritionalElementsMap::class, 'unit_id');
-	}
 }

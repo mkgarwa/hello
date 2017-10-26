@@ -11,10 +11,20 @@
 |
 */
 
-Route::get('/','Auth\LoginController@login');
+Route::get('/',function(){
+    if(Session::get('user')){
+        return Redirect::to('/home');
+    } else {
+        return view('auth.login');
+    }
+});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-Route::get('/recipe-categories', 'RecipeController@index');
-Route::post('/recipe-categories/add', 'RecipeController@index');
+Route::get('/home', ['as'=>'home', 'uses'=>'HomeController@index']);
+Route::resource('recipe-categories', 'recipeCategoriesController');
+Route::resource('recipe-unit', 'recipeUnitController');
+Route::resource('recipe-nutritional-element', 'recipeNutritionalElementController');
+Route::resource('recipe-visibilities', 'recipeVisibilitiesController');
+Route::resource('recipes', 'recipesController');
+Route::get('/recipe/delete-image/{id}', 'recipesController@deleteImage');
